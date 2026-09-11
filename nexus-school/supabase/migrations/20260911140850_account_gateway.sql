@@ -1,0 +1,10 @@
+create table public.login_limits (key text primary key, attempts integer not null default 1, window_start timestamptz not null default now());
+alter table public.login_limits enable row level security;
+revoke all on public.login_limits from anon,authenticated;
+grant all on public.login_limits to service_role;
+create function public.consume_login_attempt(k text) returns boolean language plpgsql security invoker set search_path='' as $$declare n integer;begin insert into public.login_limits(key) values(k) on conflict(key) do update set attempts=case when public.login_limits.window_start<now()-interval '15 minutes' then 1 else public.login_limits.attempts+1 end,window_start=case when public.login_limits.window_start<now()-interval '15 minutes' then now() else public.login_limits.window_start end returning attempts into n;return n<=8;end$$;
+revoke all on function public.consume_login_attempt(text) from public,anon,authenticated;
+grant execute on function public.consume_login_attempt(text) to service_role;
+create function public.ra_email(lookup_ra text) returns text language sql stable security invoker set search_path='' as $$select u.email from auth.users u join public.profiles p on p.id=u.id where p.ra=lookup_ra and p.status='approved' and p.role='student'$$;
+revoke all on function public.ra_email(text) from public,anon,authenticated;
+grant execute on function public.ra_email(text) to service_role;

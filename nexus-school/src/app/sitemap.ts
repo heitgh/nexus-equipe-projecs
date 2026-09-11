@@ -1,0 +1,1 @@
+import type {MetadataRoute} from 'next';import {courses} from '@/lib/catalog';export default function sitemap():MetadataRoute.Sitemap{const base=process.env.NEXT_PUBLIC_SITE_URL||'http://localhost:3000';return ['','/cursos','/sobre','/campus','/bolsas','/blog','/contato','/faq',...courses.map(c=>'/cursos/'+c.slug)].map(path=>({url:base+path}))}

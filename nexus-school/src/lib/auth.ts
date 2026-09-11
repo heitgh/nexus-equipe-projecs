@@ -1,0 +1,2 @@
+import 'server-only';import {redirect} from 'next/navigation';import {db} from './supabase/server';export async function current(){const client=await db();const{data:{user}}=await client.auth.getUser();if(!user)redirect('/login');const{data:profile,error}=await client.from('profiles').select('*').eq('id',user.id).single();if(error||!profile)throw Error('Não foi possível consultar seu cadastro.');return {client,user,profile};}
+export async function approved(){const context=await current();if(context.profile.status!=='approved')redirect('/portal');return context;}

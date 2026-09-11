@@ -1,0 +1,11 @@
+[
+  "director login: PASS",
+  "admin login: PASS",
+  "teacher login: PASS",
+  "student login: PASS",
+  "guardian login: PASS",
+  "RA login: PASS",
+  "RA invalid password: PASS",
+  "student privilege escalation: BLOCKED",
+  "RA email RPC public access: BLOCKED"
+]

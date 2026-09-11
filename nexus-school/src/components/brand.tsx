@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export function Brand(){return <Link href="/" className="brand" aria-label="Nexus School — início"><svg viewBox="0 0 48 56" width="38" height="44" aria-hidden="true"><path d="M24 2 44 14v27L24 54 4 41V14Z" fill="none" stroke="currentColor" strokeWidth="1.5"/><path d="m24 10 12 10-12 25-12-25Z" fill="currentColor"/><path d="M24 10v35M12 20h24" stroke="#06152E" strokeWidth="1.5"/></svg><span>NEXUS<small>SCHOOL</small></span></Link>}

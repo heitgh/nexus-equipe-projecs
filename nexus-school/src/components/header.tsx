@@ -1,0 +1,7 @@
+'use client';
+import {useEffect,useState} from 'react';
+import Link from 'next/link';
+import {Menu,X,Sun,Moon,ArrowUpRight} from 'lucide-react';
+import {Brand} from './brand';
+export function Header(){const [open,setOpen]=useState(false);const[dark,setDark]=useState(false);useEffect(()=>{const t=localStorage.getItem('nexus-theme');const d=t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.dataset.theme=d?'dark':'light';setDark(d)},[]);function theme(){const d=!dark;setDark(d);document.documentElement.dataset.theme=d?'dark':'light';localStorage.setItem('nexus-theme',d?'dark':'light')}
+return <header className="header"><div className="header-inner"><Brand/><nav className={open?'nav open':'nav'} aria-label="Navegação principal"><Link href="/sobre" onClick={()=>setOpen(false)}>A Nexus</Link><Link href="/cursos" onClick={()=>setOpen(false)}>Cursos e graduações</Link><Link href="/campus" onClick={()=>setOpen(false)}>Nosso campus</Link><Link href="/blog" onClick={()=>setOpen(false)}>Conexões</Link></nav><div className="header-actions"><button className="icon-button" onClick={theme} aria-label={dark?'Ativar tema claro':'Ativar tema escuro'}>{dark?<Sun size={18}/>:<Moon size={18}/>}</button><Link className="portal-link" href="/login">Portal Nexus <ArrowUpRight size={16}/></Link><button className="icon-button mobile-menu" aria-expanded={open} aria-label="Abrir menu" onClick={()=>setOpen(!open)}>{open?<X/>:<Menu/>}</button></div></div></header>}
