@@ -8,7 +8,7 @@
 </head>
 
 <?php
-$conexao = new mysqli('localhost', 'root', '', 'nexus_db');
+$conexao = new mysqli('localhost', 'root', 'oi', 'nexus_db');
 
 if ($conexao->connect_error) {
     die("Falha na conexão: " . $conexao->connect_error);
