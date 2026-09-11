@@ -1,0 +1,145 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 40px;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: #2c2f33;
+    background: linear-gradient(to bottom, #ffac69, #b71c1c);
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    color: #b71c1c;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #b71c1c;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+form {
+    width: 650px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: #f1f4ef;
+    border: 2px solid #556b2f;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 35px;
+    row-gap: 15px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo.nome {
+    grid-column: 1;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 6px;
+    color: #1a1a1a;
+    font-weight: bold;
+}
+
+.campo input {
+    width: 100%;
+    padding: 10px;
+    border: 1.5px solid #bdc3c7;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #2c2f33;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo input:focus {
+    border-color: #b71c1c;
+    box-shadow: 0 0 5px rgba(183, 28, 28, 0.3);
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.botoes button {
+    width: 100%;
+    padding: 10px;
+    background-color: #b71c1c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.botoes button:hover {
+    background-color: #ff3838;
+}
+
+.rodape-fogo {
+    background-image: url('../imagens/fogo.webp');
+    background-size: 100% 480px;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+
+    width: calc(100% + 80px);
+    height: 180px;
+
+    margin-left: -40px;
+    margin-right: -40px;
+    margin-top: auto;
+    margin-bottom: -40px;
+
+    flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 20px;
+    }
+
+    form {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .formulario {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .campo.nome {
+        grid-column: 1;
+    }
+
+    .rodape-fogo {
+        width: calc(100% + 40px);
+        margin-left: -20px;
+    }
+}
